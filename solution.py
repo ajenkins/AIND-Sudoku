@@ -92,7 +92,8 @@ def display(values):
     Args:
         values(dict): The sudoku in dictionary form
     """
-    # Copied from lesson code
+    # Copied from lesson code, with modification
+    assert values, 'Invalid sudoku puzzle'
     width = 1+max(len(values[s]) for s in boxes)
     line = '+'.join(['-'*(width*3)]*3)
     for r in rows:
