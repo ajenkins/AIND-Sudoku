@@ -26,7 +26,7 @@ def naked_twins(values):
 
     # Find all instances of naked twins
     # Eliminate the naked twins as possibilities for their peers
-    pass
+    return values
 
 def cross(A, B):
     "Cross product of elements in A and elements in B."
@@ -70,7 +70,7 @@ def display(values):
     return
 
 def eliminate(values):
-    # Copied from lesson code
+    # Copied from lesson code, with modification
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     for box in solved_values:
         digit = values[box]
@@ -79,7 +79,7 @@ def eliminate(values):
     return values
 
 def only_choice(values):
-    # Copied from lesson code
+    # Copied from lesson code, with modification
     for unit in unitlist:
         for digit in '123456789':
             dplaces = [box for box in unit if digit in values[box]]
@@ -88,13 +88,14 @@ def only_choice(values):
     return values
 
 def reduce_puzzle(values):
-    # Copied from lesson code
+    # Copied from lesson code, with modification
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     stalled = False
     while not stalled:
         solved_values_before = len([box for box in values.keys() if len(values[box]) == 1])
         values = eliminate(values)
         values = only_choice(values)
+        values = naked_twins(values)
         solved_values_after = len([box for box in values.keys() if len(values[box]) == 1])
         stalled = solved_values_before == solved_values_after
         if len([box for box in values.keys() if len(values[box]) == 0]):
