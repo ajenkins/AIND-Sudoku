@@ -5,7 +5,7 @@ cols = '123456789'
 def cross(A, B):
     "Cross product of elements in A and elements in B."
     # Copied from lesson code
-    return [s+t for s in a for t in b]
+    return [s+t for s in A for t in B]
 
 boxes = cross(rows, cols)
 
