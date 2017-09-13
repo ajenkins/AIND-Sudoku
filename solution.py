@@ -158,7 +158,10 @@ def solve(grid):
     Returns:
         The dictionary representation of the final sudoku grid. False if no solution exists.
     """
-    return search(grid_values(grid))
+    values = grid_values(grid)
+    solution = search(values)
+    assert solution, display(values)
+    return solution
 
 if __name__ == '__main__':
     diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
