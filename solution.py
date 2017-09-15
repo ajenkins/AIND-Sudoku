@@ -54,7 +54,7 @@ def naked_twins(values):
             for j in range(i + 1, len(unit)):
                 i_box = unit[i]
                 j_box = unit[j]
-                if values[i_box] == values[j_box] and values[i_box] == 2:
+                if values[i_box] == values[j_box] and len(values[i_box]) == 2:
                     naked_twins[values[i_box]] = (i_box, j_box)
         # Remove values in naked twins from other boxes in unit
         for vals, twins in naked_twins.items():
