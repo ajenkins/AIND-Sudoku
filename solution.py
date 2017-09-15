@@ -59,6 +59,7 @@ def naked_twins(values):
         # Remove values in naked twins from other boxes in unit
         for vals, twins in naked_twins.items():
             for box in unit:
+                # Skip box if it's one of the twins or already solved
                 if box in twins or len(values[box]) == 1:
                     continue
                 else:
