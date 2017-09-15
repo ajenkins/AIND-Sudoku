@@ -51,18 +51,19 @@ def naked_twins(values):
         naked_twins = {}
         # Find all naked twins in unit
         for i in range(len(unit)):
-            for j in range(i, len(unit)):
+            for j in range(i + 1, len(unit)):
                 i_box = unit[i]
                 j_box = unit[j]
-                if len(values[i_box]) == len(values[j_box]) == 2:
+                if values[i_box] == values[j_box] and values[i_box] == 2:
                     naked_twins[values[i_box]] = (i_box, j_box)
         # Remove values in naked twins from other boxes in unit
         for vals, twins in naked_twins.items():
             for box in unit:
-                if box in twins:
+                if box in twins or len(values[box]) == 1:
                     continue
                 else:
-                    assign_value(values, box, ''.join([v for v in values[box] if v not in vals]))
+                    new_val = ''.join([v for v in values[box] if v not in vals])
+                    assign_value(values, box, new_val)
     return values
 
 def grid_values(grid):
