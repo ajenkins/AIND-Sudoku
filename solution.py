@@ -163,7 +163,6 @@ def solve(grid):
     """
     values = grid_values(grid)
     solution = search(values)
-    display(values) if not solution else None  # Displays values if there's an error
     return solution
 
 if __name__ == '__main__':
